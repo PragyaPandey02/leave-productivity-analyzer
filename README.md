@@ -1,36 +1,175 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Leave & Productivity Analyzer
 
-## Getting Started
+A full-stack web application that analyzes employee attendance, leave usage, and productivity based on uploaded Excel attendance sheets.
 
-First, run the development server:
+The system automatically calculates worked hours, expected working hours, leave usage, and productivity percentage for employees, following predefined business rules.
 
-```bash
+---
+
+##  Features
+
+- Upload Excel (.xlsx) attendance files
+- Automatic attendance parsing and validation
+- Leave detection based on missing attendance
+- Monthly expected vs actual working hours calculation
+- Productivity percentage calculation
+- Employee-wise attendance dashboard
+- MongoDB database integration
+- Fully deployed on Vercel
+
+---
+
+##  Business Rules Implemented
+
+- **Working Days (Monday – Friday):**  
+  8.5 hours per day (10:00 AM – 6:30 PM)
+
+- **Saturday:**  
+  Half day – 4 hours (10:00 AM – 2:00 PM)
+
+- **Sunday:**  
+  Non-working day
+
+- **Leave Policy:**  
+  - 2 leaves allowed per employee per month  
+  - Missing attendance on working days is counted as leave
+
+- **Productivity Formula:** 
+Productivity (%) = (Actual Worked Hours / Expected Working Hours) × 100
+
+
+
+---
+
+##  Excel File Format
+
+The uploaded Excel file must contain the following columns:
+
+| Column Name     | Description              |
+|-----------------|--------------------------|
+| Employee Name   | Name of the employee     |
+| Date            | Attendance date          |
+| In-Time         | Login time               |
+| Out-Time        | Logout time              |
+
+> Excel dates and times are automatically converted and processed by the backend.
+
+---
+
+##  Tech Stack
+
+### Frontend
+- Next.js (App Router)
+- TypeScript
+- Tailwind CSS
+
+### Backend
+- Next.js API Routes
+- Prisma ORM
+- MongoDB Atlas
+
+### Deployment
+- Vercel (Frontend & Backend)
+- GitHub (Version Control)
+
+---
+
+##  Project Structure
+leave-productivity-analyzer/
+├── app/
+│ ├── api/
+│ │ └── upload/
+│ │ └── route.ts
+│ ├── page.tsx
+├── lib/
+│ └── prisma.ts
+├── prisma/
+│ └── schema.prisma
+├── public/
+├── .env
+├── package.json
+├── next.config.ts
+├── README.md
+
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the root directory and add:
+DATABASE_URL=mongodb+srv://<username>:<password>@cluster0.mongodb.net/?retryWrites=true&w=majority
+
+
+---
+
+## ▶️ Running the Project Locally
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/PragyaPandey02/leave-productivity-analyzer.git
+2. Install dependencies
+npm install
+
+3. Generate Prisma client
+npx prisma generate
+
+4. Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open browser
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+** Live Demo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔗 Deployed on Vercel:
+(https://vercel.com/pragyapandey02s-projects/leave-productivity-analyzer-vercel/BuUnqSjBBQdZX2ZGybo1tTwcFp6z)
 
-## Learn More
+ ** Future Improvements
 
-To learn more about Next.js, take a look at the following resources:
+Month and employee filtering
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Export reports to Excel/PDF
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Role-based access (Admin / Employee)
 
-## Deploy on Vercel
+Charts for productivity visualization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+** Author
+Pragya Pandey
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+** License
+This project is created for educational and assignment purposes.
+
+
+---
+
+### What to do now
+1. Open **README.md**
+2. Replace everything with the content above
+3. Save
+4. Commit & push:
+
+### Dashboard Screenshots
+1) Uploading xl sheet 
+<img width="952" height="364" alt="image" src="https://github.com/user-attachments/assets/69fa2559-b8ac-4475-916a-df230b1af6ee" />
+
+2) Data saved successfully
+<img width="567" height="176" alt="image" src="https://github.com/user-attachments/assets/ebea6fb5-d7f9-4296-b52f-6a4e65d9ed2d" />
+
+3) The normal dashboard
+<img width="947" height="896" alt="image" src="https://github.com/user-attachments/assets/69996c13-17ca-411a-998e-034ba1c98ea6" />
+
+<img width="921" height="890" alt="image" src="https://github.com/user-attachments/assets/b1b01952-7f85-4137-a7bb-05541080dadd" />
+
+4) Filtering on the basis of Month and Employee
+<img width="922" height="886" alt="image" src="https://github.com/user-attachments/assets/16a4211f-0fe3-462f-9e72-b586a5066c51" />
+
+<img width="943" height="907" alt="image" src="https://github.com/user-attachments/assets/f7992819-86c4-444d-8834-4efaa10d4265" />
+
+
+
+
+
+
+
+
